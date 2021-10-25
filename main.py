@@ -1,16 +1,29 @@
+from GeneticAlgorithm import GeneticAlgorithm
 from functions import RosenbrockFunction
 from functions import HimmelblauFunction
+from functions import SphereFunction
 
 
 def main():
-    # rosenbrock_function = RosenbrockFunction()
-    # rosenbrock_function.draw_plot()
+    # sf = SphereFunction()
+    # function = sf.function
 
-    # himmelblau_function = HimmelblauFunction()
-    # himmelblau_function.draw_plot()
+    # rf = RosenbrockFunction()
+    # function = rf.function
 
-    test_int = bin(255)
-    print(str(test_int)[2:])
+    hf = HimmelblauFunction()
+    function = hf.function
+
+    # sf.draw_plot()
+    # rf.draw_plot()
+    # hf.draw_plot()
+
+    ga = GeneticAlgorithm(function)
+    for i in range(ga.POPULATION_SIZE):
+        print(ga.starting_population[i][0],
+              ga.starting_population[i][1], "\t",
+              ga.resulting_population[i][0],
+              ga.resulting_population[i][1], end='\n')
 
 
 if __name__ == "__main__":

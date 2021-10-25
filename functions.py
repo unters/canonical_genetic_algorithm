@@ -21,3 +21,12 @@ class HimmelblauFunction(Function):
 
     def draw_plot(self):
         super(HimmelblauFunction, self).draw_plot([-4, 4], [-4, 4])
+
+
+class SphereFunction(Function):
+    """ TODO: Add description to SphereFunction. """
+    def function(self, x, y):
+        return x ** 2 + y ** 2
+
+    def draw_plot(self):
+        super(SphereFunction, self).draw_plot([-4, 4], [-4, 4])
