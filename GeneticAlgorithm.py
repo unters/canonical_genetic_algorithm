@@ -15,8 +15,8 @@ class GeneticAlgorithm:
     - single point crossover,
     - gene-wise mutation. """
 
-    POPULATION_SIZE = 20
-    POPULATIONS_LIMIT = 100
+    POPULATION_SIZE = 40
+    POPULATIONS_LIMIT = 200
     CHROMOSOME_MUTATION_PROBABILITY = 0.3
     GENE_MUTATION_PROBABILITY = 0.15
     RANDOM_SEED = 1975
@@ -84,19 +84,19 @@ class GeneticAlgorithm:
 
         crossover_point_x = randint(1, 8)
         crossover_point_y = randint(1, 8)
-
-        binary_mask_x = 256 - 2 ** crossover_point_x
-        binary_mask_y = 256 - 2 ** crossover_point_y
+        # TODO: Check if 256 is a correct value
+        binary_mask_x = 1024 - 2 ** crossover_point_x
+        binary_mask_y = 1024 - 2 ** crossover_point_y
 
         first_child_x = Chromosome(first_parent_x & binary_mask_x +
-                                   second_parent_x & (255 - binary_mask_x))
+                                   second_parent_x & (1023 - binary_mask_x))
         first_child_y = Chromosome(first_parent_y & binary_mask_y +
-                                   second_parent_y & (255 - binary_mask_y))
+                                   second_parent_y & (1023 - binary_mask_y))
 
         second_child_x = Chromosome(second_parent_x & binary_mask_x +
-                                    first_parent_x & (255 - binary_mask_x))
+                                    first_parent_x & (1023 - binary_mask_x))
         second_child_y = Chromosome(second_parent_y & binary_mask_y +
-                                    first_parent_y & (255 - binary_mask_y))
+                                    first_parent_y & (1023 - binary_mask_y))
 
         first_child = [first_child_x, first_child_y]
         second_child = [second_child_x, second_child_y]

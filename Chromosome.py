@@ -32,19 +32,23 @@ class Chromosome:
         return str(round(self.get_float_representation(), 2))
 
     def get_binary_representation(self):
+        """ Return binary representation of a chromosome for genetic
+        algorithm. """
         binary_representation = (self.sign << 9) + \
                                 (self.integer_part << 7) + \
                                 self.fractional_part
         return binary_representation
 
     def get_float_representation(self):
+        """ Return float representation of a chromosome to pass it
+        to function. """
         if self.sign == 1:
             return -1 * (self.integer_part + self.fractional_part * (10 ** (-2)))
         else:
             return self.integer_part + self.fractional_part * (10 ** (-2))
 
 
-# DEBUG SECTION
+# DEBUG
 
 def main():
     c = Chromosome()
